@@ -29,3 +29,7 @@ Route::get('yahoo/{id}/{name?}/{age?}', function ($id,$name="golden",$age=38) {
 Route::get('user', function () {
     return view('user');
 });
+
+Route::get('pay', function () {
+    return view('payrollsystem');
+});
