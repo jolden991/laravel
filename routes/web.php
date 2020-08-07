@@ -19,3 +19,13 @@ Route::get('/', function () {
 Route::get('test', function () {
     return view('test');
 });
+
+
+Route::get('yahoo/{id}/{name?}/{age?}', function ($id,$name="golden",$age=38) {
+    return  "hlo i am text<br>"."useid=".$id."<br>NAME=".$name."<br>age=".$age;
+});
+
+
+Route::get('user', function () {
+    return view('user');
+});
