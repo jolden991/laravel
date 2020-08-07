@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css"
+    rel="stylesheet" type="text/css" />
+  <title></title>
+</head>
+<body>
+  <fieldset style="background-color: #f2f2f2; width:500px; margin-left: 200px; margin-top: 70px;">
+
+  <form action="" id="the-form">
+    <p>
+      E-mail
+      <input name="..." data-validation="email" data-validation-help="Som help info...">
+    </p>
+    <p>
+      URL
+      <input name="..." data-validation="url">
+    </p>
+    <p>
+      Only allows alphanumeric characters and hyphen and underscore
+      <input name="..." data-validation="alphanumeric" data-validation-allowing="-_">
+    </p>
+    <p>
+      Only lowercase letters a-z (regexp)
+      <input name="..." data-validation="custom" data-validation-regexp="^([a-z]+)$">
+    </p>
+    <p>
+      Minimum 5 chars
+      <input name="..." data-validation="length" data-validation-length="min5">
+    </p>
+    <p>
+      Maximum 5 chars
+      <input name="..." data-validation="length" data-validation-length="5-10">
+    </p>
+    <p>
+      Between 3-5 chars
+      <input name="..." data-validation="length" data-validation-length="3-5">
+    </p>
+    <p>
+      What's your favorite color?
+      <input name="..." data-suggestions="White, Green, Blue, Black, Brown">
+    </p>
+    <p>
+      Validate e-mail but only if an answer is given
+      <input name="..." data-validation="email" data-validation-optional="true">
+    </p>
+    <p>
+      Restrict length
+      <span id="max-length-element">10</span> chars left
+      <textarea id="the-textarea" name="text"></textarea>
+    </p>
+     <p>
+    User Presentation (<span id="pres-max-length">100</span> characters left)
+    <textarea name="presentation" id="presentation"></textarea>
+  </p>
+  <p><input type="reset" name="reset"></p>
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+</fieldset>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script>
+  $.validate();
+  $('#my-textarea').restrictLength( $('#max-length-element') );
+
+  $('#presentation').restrictLength( $('#pres-max-length'));
+
+
+</script>
+<script type="text/javascript">
+  $.validate({
+  borderColorOnError : 'red',
+  addValidClassOnAll : true
+});
+</script>
+
+
+</body>
+</html>
