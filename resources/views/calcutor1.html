@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>   <title>calcutor</title>
+	<script type="text/javascript">
+	
+		function dis(){
+			var a=Number(document.getElementById("first").value);
+			var b=Number(document.getElementById("second").value);
+			var c=a+b;
+			document.getElementById("result").value=c;}
+		function dis1(){ var a=Number(document.getElementById("first").value);
+			var b=Number(document.getElementById("second").value);
+			 var d=a-b;
+			document.getElementById("result").value=d;}
+		
+function dis2(){	 var a=Number(document.getElementById("first").value);
+			var b=Number(document.getElementById("second").value);
+			   var e=a*b;
+			document.getElementById("result").value=e;}
+			function dis3(){ var a=Number(document.getElementById("first").value);
+			var b=Number(document.getElementById("second").value);
+			  var f=a/b;
+			document.getElementById("result").value=f;}
+	
+function dis4(){ var a=Number(document.getElementById("first").value);
+			var b=Number(document.getElementById("second").value);
+			   var g=a%b;
+			document.getElementById("result").value=g;}    </script>
+	     <style type="text/css"> hr{background-color: black; } button{cursor: pointer; font-size: 20px; background-color:black; color: white;} input{padding:5
+	     px;}</style>   </head>
+<body  style="background-color: skyblue;">
+	<center ><h style="font-size: 30px; font-style:italic;  color:blue; "> Simple Calcutor using JavaScript</h></center><hr size="7">
+ENTER Ist VALUE:<input type="text" name="text" id="first"><br><br>
+ENTER 2nd VALUE:<input type="text" name="text" id="second"><br><br>
+RESULT:<input type="text" name="text" id="result"><br><br>
+    <button type="button" onclick="dis();">+</button>  <button type="button" onclick="dis1();">-</button>
+     <button type="button" onclick="dis2();">*</button> <button type="button" onclick="dis3();">/</button>
+   <button type="button"  onclick="dis4();">%</button>    <hr size="7">
+</body></html>
