@@ -33,3 +33,12 @@ Route::get('user', function () {
 Route::get('pay', function () {
     return view('payrollsystem');
 });
+Route::get('form', function () {
+    return view('form');
+});
+
+Route::get('student', function () {
+    return view('student');
+});
+
+Route::get('perform','StudentController@index');
