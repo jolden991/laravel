@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Student;
+use Illuminate\Support\Facades\URL;
+use DB;
 
 class StudentController extends Controller
 {
@@ -14,9 +17,12 @@ class StudentController extends Controller
     public function index()
 
     {
-        echo "<button  style='background-color:#1ad1ff; color:#ff3300;
-         height:40px; font-size:20px;'>"."<a href='form'   style='text-decoration:none; background-color:#1ad1ff; color:#ff3300'  > ADD RECORD </a>"."</button>";
-      
+
+       $data = DB::table('students')->paginate(5);
+//$data= Student::all();
+        return view('student',compact('data'));
+       
+        
     }
 
     /**
@@ -24,11 +30,23 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    public function search( )
 
+    {
+
+
+
+
+
+        $data = DB::table('students')->paginate(5);
+        //$data= Student::all();
+//return view('student',compact('data'));
+
+
+       $search=$_GET['query'];
+       $dataa=Student::where('id','LIKE','%'.$search.'%')->orWhere('title','LIKE','%'.$search.'%')->orwhere('description','LIKE','%'.$search.'%')->get();
+       return view('student',compact('dataa','data'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -36,8 +54,21 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {$request->validate([
+        'title'=>'required',
+        'description'=>'required',
+        
+    ]);
+    $hh=Student::create($request->all());
+      $k=$hh->id;
+     
+      
+  
+   return redirect()->route('students.index')->with('success', "your record insert successfully AND Registration numer is:".$k);
+       
+       
+      
+//$path=$request->file('image')->store('upload');      echo $path; 
     }
 
     /**
@@ -47,7 +78,14 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+
+    {       $student = Student::find($id);
+         
+     
+
+          
+        return view('show', compact('student'));
+
         //
     }
 
@@ -58,7 +96,12 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {    $contact = Student::find($id);
+         
+     
+
+          
+        return view('edit', compact('contact'));
         //
     }
 
@@ -69,9 +112,28 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request ,$id)
+    { 
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            
+        ]);
+        
+        
+        
+        
+        $yy = Student::find($id);
+        $yy->title = $request->get('title');
+        $yy->description = $request->get('description');
+       
+        $yy->save();
+        
+    
+
+        return redirect()->route('students.index')->with('up', 'your record updated successfully');
+   // return redirect()->route('students.index');
+        
     }
 
     /**
@@ -81,7 +143,17 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
+        $data=Student::find($id);
+        
+        $data->delete();
+        return redirect()->route('students.index')->with('del', 'your record delete successfully');;
+
         //
     }
+    
+                             
+
+
+
 }

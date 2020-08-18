@@ -1,15 +1,27 @@
 
 
+@extends('base')
+@section('main')
+
+
+
+
+@if ($errors->any())
+      <div >
+        <ul>
+            @foreach ($errors->all() as $error)
+<script>  alert(  "  {{ $error }}" );  </script>
+            @endforeach
+        </ul>
+      </div><br />
+    @endif
+
 <html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
+
 <body    >
+<h   style="font-size:40px;  border:2px double white;  border-radius:10px;  
+       box-shadow: 5px 10px   10px  silver;  "> <strong><i> INSERT RECORD </i></strong>   
+               </h>    
 
 
 
@@ -18,8 +30,10 @@
  box-shadow: 5px 10px   10px 8px silver; 
  border-radius:10px;'>
 
-<form method="GET">
+<form method="GET" action="crud"             >
+@csrf
 <div class="form-group">
+
 <i>Title</i><input type="text"  name="title"   class="form-control"  placeholder="Enter title"   > </div> <br> <br>
 <i>Description</i><textarea  name="description"        class="form-control"           > </textarea> <br> <br>
 <input type="submit"  name="submit"     class="btn btn-success"         >
@@ -33,3 +47,4 @@
 
 </body>
 </html>
+@endsection
