@@ -53,8 +53,8 @@
       
 
 <div class="form-group">
-<i>Title</i><input type="text"  name="title"   value="{{ $contact['title'] }}"   class="form-control"    > </div> <br> <br>
-<i>Description</i><textarea name="description"    value="{{ $contact['description'] }}"      class="form-control"           > </textarea> <br> <br>
+<i>Title</i><input type="text"  name="title"   value="{{ $contact->title }}"   class="form-control"    > </div> <br> <br>
+<i>Description</i><textarea name="description"    value="{{ $contact->description}}"      class="form-control"           > </textarea> <br> <br>
 <input type="submit"  name="submit"     class="btn btn-success"         >
 </fieldset>
 

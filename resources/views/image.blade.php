@@ -22,14 +22,13 @@
  box-shadow: 5px 10px   10px 8px silver; 
  border-radius:10px;'>
 
-<form method="GET" action="crud"    >
+<form method="GET" action="crudd"    >
 @csrf
 <div class="form-group">
 
-<i>Title</i><input type="text"  name="title"          class="form-control "  placeholder="Enter title"   > 
-<span  style='color:red;'> {{$errors->first('title')}} </span>                    </div> <br> <br>
-<i>Description</i><textarea  name="description"        class="form-control"           > </textarea>
- <span  style='color:red;'> {{$errors->first('description')}} </span><br> <br>
+<i>image</i><input type="file"  name="image"          class="form-control "  placeholder="Enter title"   > 
+<span  style='color:red;'> {{$errors->first('image')}} </span>                    </div> <br> <br>
+
 <input type="submit"  name="submit"     class="btn btn-success"         >
 </fieldset>
 

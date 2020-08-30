@@ -1,10 +1,9 @@
 @extends('base')
 @section('main')
+<?php   echo session('data')['title'];       ?>
 
 
-
-
-<form action="{{url('/search')}}" method="get">
+<form action="search" method="get">
 <input  type="text" placeholder="Search" aria-label="Search" name="query"         >
 
 
@@ -124,7 +123,7 @@
 @foreach($data as $i)
 <tr> <td>  {{$i->id}}  </td> 
 <td>  {{$i->title}}  </td>
-<td>  {{$i->description}}  </td>       <td>  {{$i->image}}  </td> 
+<td>  {{$i->description}}  </td>      
 
 <td>    <a href="{{ route('students.show',$i->id)}}" class="btn btn-warning">show</a>                    </td>
 <td>

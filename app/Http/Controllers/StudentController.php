@@ -14,16 +14,38 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
+
+
+
+
+
+
+
+
+
     public function index()
 
     {
+        
+
+
+
+
 
        $data = DB::table('students')->paginate(5);
 //$data= Student::all();
         return view('student',compact('data'));
-       
-        
+   
+
     }
+        
+    
 
     /**
      * Show the form for creating a new resource.
@@ -54,18 +76,29 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {$request->validate([
-        'title'=>'required',
-        'description'=>'required',
+    {    $request->validate([ 'title'=>'required ',
+        'description'=>'required'
         
     ]);
+
+   
+
+ 
+
+
     $hh=Student::create($request->all());
-      $k=$hh->id;
+      $kk=$hh->id;
+     
+
+
+      $request->session()->put('data',$request->input());
+      $k=$request->session()->get('data');
+      if($k['title']== "admin" && $k['description']=="admin"){
      
       
   
-   return redirect()->route('students.index')->with('success', "your record insert successfully AND Registration numer is:".$k);
-       
+   return redirect()->route('students.index')->with('success', "your record insert successfully AND Registration numer is:".$kk);}
+       else{return view('welcome');}
        
       
 //$path=$request->file('image')->store('upload');      echo $path; 
@@ -148,7 +181,7 @@ class StudentController extends Controller
         
         $data->delete();
         return redirect()->route('students.index')->with('del', 'your record delete successfully');;
-
+ 
         //
     }
     

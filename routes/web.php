@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Route::get('test', function () {
     return view('test');
-});
+})->middleware('auth');
 Route::get('index', function () {
     return view('index');
 });
@@ -48,9 +48,12 @@ Route::get('edit', function () {
 Route::get('pay', function () {
     return view('payrollsystem');
 });
+
+
+
 Route::get('form', function () {
     return view('form');
-});
+})->middleware('auth');
 
 
 
@@ -58,14 +61,30 @@ Route::get('form', function () {
 Route::get('student', function () {
     return view('student');
 });
-Route::get('crud','StudentController@store');
-Route::get('del','StudentController@destroy');
-Route::get('up','StudentController@update');
-Route::get('/search','StudentController@search');
-
 
 
 Route::resource('students','StudentController');
+
+
+Route::get('crud','StudentController@store');
+Route::get('del','StudentController@destroy');
+Route::get('up','StudentController@update');
+Route::get('search','StudentController@search');
+
+
+
+Route::get('image', function () {
+    return view('image');
+});
+
+Route::get('imagee', function () {
+    return view('imagee');
+});
+
+Auth::routes();
+Route::resource('images','ImageController');
+Route::get('crudd','ImageController@store');
+
 Route::get('sr', function () {
     return view('sr');
 });
@@ -74,4 +93,14 @@ Route::get('/file','StudentController@store');
 
 
  
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('k', 'StudentController@index')->name('k');
+//Route::get('students', 'StudentController@index');
+
+
+
 

@@ -17,6 +17,7 @@
   <script src="{{ asset('js/app.js') }}" type="text/js"></script>
   <style> .jy{  width:600px;   border:2px double silver; 
      border-radius:2px;       box-shadow: 5px 10px 
-  10px 8px silver;            >} </style>
-</body>
+  10px 8px silver;            } 
+                                  }                                                </style>
+                       </body>
 </html>
