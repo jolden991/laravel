@@ -22,7 +22,7 @@
  box-shadow: 5px 10px   10px 8px silver; 
  border-radius:10px;'>
 
-<form method="GET" action="crud"    >
+<form  action="crud"  method="GET"  >
 @csrf
 <div class="form-group">
 

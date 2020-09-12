@@ -91,14 +91,14 @@ class StudentController extends Controller
      
 
 
-      $request->session()->put('data',$request->input());
-      $k=$request->session()->get('data');
-      if($k['title']== "admin" && $k['description']=="admin"){
+      //$request->session()->put('data',$request->input());
+      //$k=$request->session()->get('data');
+     // if($k['title']== "admin" && $k['description']=="admin"){
      
       
   
-   return redirect()->route('students.index')->with('success', "your record insert successfully AND Registration numer is:".$kk);}
-       else{return view('welcome');}
+   return redirect()->route('students.index')->with('success', "your record insert successfully AND Registration numer is:".$kk);
+       //else{return view('welcome');}
        
       
 //$path=$request->file('image')->store('upload');      echo $path; 
